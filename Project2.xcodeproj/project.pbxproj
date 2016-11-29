@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9F5E000D1DEE01F70024C8CA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E000C1DEE01F70024C8CA /* main.cpp */; };
 		9F5E00161DEE024C0024C8CA /* hardDrive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E00131DEE024C0024C8CA /* hardDrive.cpp */; };
+		9F9D46191DEE327400B2E443 /* MemoryManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D46131DEE327400B2E443 /* MemoryManager.cpp */; };
+		9F9D461A1DEE327400B2E443 /* NextFit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D46151DEE327400B2E443 /* NextFit.cpp */; };
+		9F9D461B1DEE327400B2E443 /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D46171DEE327400B2E443 /* Time.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +32,12 @@
 		9F5E00131DEE024C0024C8CA /* hardDrive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hardDrive.cpp; sourceTree = "<group>"; };
 		9F5E00141DEE024C0024C8CA /* hardDrive.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hardDrive.hpp; sourceTree = "<group>"; };
 		9F5E00151DEE024C0024C8CA /* main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
+		9F9D46131DEE327400B2E443 /* MemoryManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemoryManager.cpp; sourceTree = "<group>"; };
+		9F9D46141DEE327400B2E443 /* MemoryManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MemoryManager.hpp; sourceTree = "<group>"; };
+		9F9D46151DEE327400B2E443 /* NextFit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NextFit.cpp; sourceTree = "<group>"; };
+		9F9D46161DEE327400B2E443 /* NextFit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NextFit.hpp; sourceTree = "<group>"; };
+		9F9D46171DEE327400B2E443 /* Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
+		9F9D46181DEE327400B2E443 /* Time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +70,12 @@
 		9F5E000B1DEE01F70024C8CA /* Project2 */ = {
 			isa = PBXGroup;
 			children = (
+				9F9D46131DEE327400B2E443 /* MemoryManager.cpp */,
+				9F9D46141DEE327400B2E443 /* MemoryManager.hpp */,
+				9F9D46151DEE327400B2E443 /* NextFit.cpp */,
+				9F9D46161DEE327400B2E443 /* NextFit.hpp */,
+				9F9D46171DEE327400B2E443 /* Time.cpp */,
+				9F9D46181DEE327400B2E443 /* Time.hpp */,
 				9F5E00131DEE024C0024C8CA /* hardDrive.cpp */,
 				9F5E00141DEE024C0024C8CA /* hardDrive.hpp */,
 				9F5E00151DEE024C0024C8CA /* main.hpp */,
@@ -125,8 +140,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F9D46191DEE327400B2E443 /* MemoryManager.cpp in Sources */,
 				9F5E000D1DEE01F70024C8CA /* main.cpp in Sources */,
+				9F9D461A1DEE327400B2E443 /* NextFit.cpp in Sources */,
 				9F5E00161DEE024C0024C8CA /* hardDrive.cpp in Sources */,
+				9F9D461B1DEE327400B2E443 /* Time.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +263,7 @@
 				9F5E00121DEE01F70024C8CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

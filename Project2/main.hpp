@@ -1,6 +1,8 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
+#include "Time.hpp"
+
 //Declare global variables
 extern const int t_memmove;
 extern Time t;

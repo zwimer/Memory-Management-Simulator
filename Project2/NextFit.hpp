@@ -10,11 +10,11 @@ public:
 	//Destructor
 	~NextFit();
 
-	//Interface methods
-	void addProc(char p, int n);
-	void removeProc(char p);
-
 private:
+    
+    //Interface methods
+    void addProcP(char p, int n);
+    void removeProcP(char p);
 
 	//Representation
 	int lastUsed;

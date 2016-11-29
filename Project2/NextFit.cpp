@@ -12,26 +12,30 @@ NextFit::~NextFit() {}
 void NextFit::addProcP(char p, int n) {
 
 	//Find the next place the process can be placed
-	int index = findNextFit(lastUsed, n).index;
+	int index = m.findNextFit(lastUsed, n).index;
 
 	//If de-fragmentation is required, do so
 	if (index == -1) {
 
 		//Note that defragmentation has begin
-		std::cout << "Cannot place process " << p << " -- starting defragmentation";
+		std::cout << "Cannot place process " << p << " -- starting defragmentation\n";
 
 		//DeFrag
-		deFrag();
+		m.deFrag();
 
 		//Find where to place the process now
-		index = findNextFit(lastUsed, n).index;
+		index = m.findNextFit(lastUsed, n).index;
 	}
 
+    //Note that the process was placed
+    std::cout << t << "Placed process " << p << ":\n";
+    
 	//Place the process and note where
-	allocateMemory(lastUsed = index, n ,p);
+	m.allocateMemory(index, n ,p);
+    lastUsed = (index + n) % m.size();
 }
 
 //Remove process p from memory
 void NextFit::removeProcP(char p) {
-	freeMem(p);
+	m.freeMem(p);
 }

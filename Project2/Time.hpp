@@ -1,7 +1,7 @@
 #ifndef TIME_HPP
 #define TIME_HPP
 
-#include "main.hpp"
+#include <ostream>
 
 //A class representing time
 class Time {

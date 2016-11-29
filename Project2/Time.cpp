@@ -1,10 +1,13 @@
 #include "Time.hpp"
+#include "main.hpp"
+
+#include <ostream>
 
 //Constructor
 Time::Time() { reset(); }
 
 //Getters
-int getTime() const { return t; }
+int Time::getTime() const { return t; }
 
 //Only to be called by main
 void Time::increaseTime(int n) { 
@@ -13,16 +16,16 @@ void Time::increaseTime(int n) {
  }
 
 //Only to be called by HardDrive
-void increaseDeFragTime() {
+void Time::increaseDeFragTime() {
 	tDeFrag++;
 }
 
 //Reset's time
-void reset() {
-	t = tPrint = 0;
+void Time::reset() {
+	t = tDeFrag = 0;
 }
 
 //Used for printing!
-friend std::ostream& operator << (std::ostream& s, const Time& t) {
-	return (s << "time " << (t+tDeFrag) << "ms: ");
+std::ostream& operator << (std::ostream& s, const Time& t) {
+	return (s << "time " << (t.t+t.tDeFrag) << "ms: ");
 }

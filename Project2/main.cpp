@@ -23,7 +23,26 @@ void Assert(bool b, const char *s) { if (!b) Err(s); }
 
 int main() {
 
+	NextFit a;
+    
+    a.addProc('A', 3);
+	a.addProc('B', 3);
+	a.addProc('C', 3);
 
+	t.increaseTime(100);
+	a.removeProc('B');
 
+	t.increaseTime(100);
+	a.addProc('Z' ,4);
+
+    t.increaseTime(100);
+    a.removeProc('Z');
+    a.addProc('Z', 2);
+    a.removeProc('A');
+    
+    t.increaseTime(100);    
+    a.addProc('B', 4);
+
+    
 	return 0;
 }

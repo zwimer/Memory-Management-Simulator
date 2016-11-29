@@ -1,28 +1,42 @@
+#ifndef HARD_DRIVE_HPP
+#define HARD_DRIVE_HPP
+
 #include <iostream>
 #include <vector>
 
 //A struct that contains an index of memory
 //and the amount of space there is in excess
-typedef struct __nextFit_struct {
-	int index;
-	int space;
-} nextFit;
+class nextFit {
+public:
+    nextFit(int a, int b);
+    nextFit(const nextFit &);
+	const int index;
+	const int space;
+};
 
 //A class representing the hard drive
-class hardDrive {
+class HardDrive {
 public:
 
 	//Constructor
-	hardDrive();
+	HardDrive();
 
 	//Finds the next location after index in memory that 
 	//can fit n memory units and returns it's index in memory.
 	//This function returns -1 if defragmentation is required
-	int findNextFit(int index, int n) const;
-
+	nextFit findNextFit(int index, int n) const;
+    
+    //Returns the location of the next free chunk
+    //of memory after index, assumes index is free
+    //Returns -1 if there is no free memory in the system
+    int findNextFreeChunk(int index) const;
+    
 	//Prints the memory
 	void printMemory() const;
 	
+    //Returns size of memory
+    int size() const;
+    
 	//Returns true if size memory units are free
 	bool canFit(int size) const;	
 
@@ -32,6 +46,9 @@ public:
 	//Allocates n units of memory at index n for proc
 	void allocateMemory(int index, int n, char proc);
 
+    //Removes proc from memory
+    void freeMem(char proc);
+    
 private:
 	
 	//Representation
@@ -40,3 +57,5 @@ private:
 	static const int MemoryWidth;
 	static const int MemoryHeight;
 };
+
+#endif
