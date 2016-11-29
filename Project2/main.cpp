@@ -1,8 +1,16 @@
+#include "main.hpp"
+#include "NextFit.hpp"
+
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "hardDrive.hpp"
+
+//Define t_memmove
+extern const int t_memmove = 1;
+
+//Declare global time
+Time t;
 
 //A function used if an assert fails
 void Err(const char *s) {
@@ -13,27 +21,7 @@ void Err(const char *s) {
 //A function used to test assertions
 void Assert(bool b, const char *s) { if (!b) Err(s); }
 
-
 int main() {
-
-
-	hardDrive d;
-	
-	d.allocateMemory(0, 5, 'A');
-	d.printMemory();
-	d.allocateMemory(11, 2, 'B');
-	d.printMemory();
-	d.allocateMemory(20, 4, 'C');
-	d.printMemory();
-	d.allocateMemory(50, 2, 'D');
-	d.printMemory();
-	d.allocateMemory(60, 3, 'E');
-for(int i = 0; i < 3; i++) std::cout << std::endl;
-	d.printMemory();
-
-	d.deFrag();
-    for(int i = 0; i < 3; i++) std::cout << std::endl;
-	d.printMemory();
 
 
 
