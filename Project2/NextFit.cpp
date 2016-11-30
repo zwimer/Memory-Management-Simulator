@@ -22,6 +22,7 @@ void NextFit::addProcP(char p, int n) {
 
 		//DeFrag
 		m.deFrag();
+        lastUsed = 0;
 
 		//Find where to place the process now
 		index = m.findNextFit(lastUsed, n).index;
