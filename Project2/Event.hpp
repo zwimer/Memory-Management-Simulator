@@ -8,10 +8,10 @@ class Event {
 public:
     
 	//Constructor
-	Event(char _proc, int _event, int _time);
+	Event(char _proc, int _mem, int _event, int _time);
 
 	//Representation
-    const int event, time;
+    const int event, time, mem;
     const char proc;
 
 	//Different states of event
@@ -22,7 +22,7 @@ public:
 //Used to compare events
 class EventCompare {
 public:
-	bool operator() (const Event, const Event); 
+	bool operator() (const Event*, const Event*);
 };
 
 #endif

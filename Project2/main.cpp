@@ -2,11 +2,15 @@
 #include "Event.hpp"
 #include "NextFit.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
+#include <sstream>
 #include <stdio.h>
 #include <vector>
 #include <queue>
+#include <map>
 
 //Define t_memmove
 extern const int t_memmove = 1;
@@ -15,7 +19,7 @@ extern const int t_memmove = 1;
 Time t;
 
 //Helpful typedef
-typedef std::priority_queue<Event, std::vector<Event>, EventCompare> eQueue;
+typedef std::priority_queue<Event*, std::vector<Event*>, EventCompare> eQueue;
 
 //A function used if an assert fails
 void Err(const char *s) {
@@ -27,45 +31,87 @@ void Err(const char *s) {
 void Assert(bool b, const char *s) { if (!b) Err(s); }
 
 //Read the input file
-eQueue readFile(const char * inFile) {
+eQueue readFile(const char * inFileName) {
     
     //Create a queue
     eQueue ret;
     
+    //Open the file
+    std::ifstream inFile(inFileName);
     
-    
-    //TODO: Do stuff here 
-    
-    
-    
+    //For each line
+    std::string line;
+    while(std::getline(inFile, line)) {
+        
+        //Skip empty, and comment lines
+        if (!line.size()) continue;
+        if (line[0] == '#') continue;
+        
+        //Variables to be read
+        int mem, t1, t2;
+        char proc;
+        
+        //Prepare the line to be read
+        for(int i = 0; i < line.size(); i++)
+            if (line[i] == '/') line[i] = ' ';
+        std::istringstream theLine(line);
+        
+        //Read line in, if it is formatted correctly
+        if (!(theLine >> proc >> mem)) continue;
+        while (theLine >> t1 >> t2) {
+            ret.push(new Event(proc, mem, Event::ARRIVE, t1));
+            ret.push(new Event(proc, mem, Event::LEAVE, t1+t2));
+        }
+    }
+
     //Return the queue
     return std::move(ret);
 }
 
-int main() {
-
+//Perform simulation
+void simulate(const eQueue& q, MemoryManager* algo) {
     
-    eQueue theQueue = readFile("fileName");
-	NextFit a;
+    //Keeps track of whether or not to skip a process
+    std::map<char, bool> skipProcess;
     
-    a.addProc('A', 3);
-	a.addProc('B', 3);
-	a.addProc('C', 3);
-
-	t.increaseTime(100);
-	a.removeProc('B');
-
-	t.increaseTime(100);
-	a.addProc('Z' ,4);
-
-    t.increaseTime(100);
-    a.removeProc('Z');
-    a.addProc('Z', 2);
-    a.removeProc('A');
+    //Run each event
+    for(eQueue theQueue(q);theQueue.size(); theQueue.pop()) {
+        Event * e = theQueue.top();
+        
+        //If the process hasn't been seen yet, don't skip it
+        if (skipProcess.find(e->proc) == skipProcess.end())
+            skipProcess[e->proc] = false;
+        
+        //Skip removing the process if need be
+        else if (skipProcess[e->proc]) continue;
+        
+        //Adjust time
+        t.setTime(theQueue.top()->time);
+        
+        //If a process needs memory, allocate memory if possible
+        if (theQueue.top()->event==Event::ARRIVE) {
+            
+            //If a process couldn't be added because of space, not to skip removing it
+            skipProcess[e->proc] = !algo->addProc(theQueue.top()->proc, theQueue.top()->mem);
+        }
+        
+        //If a process is ready to leave memory, free up the space
+        else algo->removeProc(theQueue.top()->proc);
+    }
     
-    t.increaseTime(100);    
-    a.addProc('B', 4);
+    //Prevent leaks
+    delete algo;
+}
 
+//Main function
+int main(int argc, char* argv[]) {
     
-	return 0;
+    //Make the queue of events
+    eQueue theQueue = readFile(argv[1]);
+    
+    //Simulate next fit
+    simulate(theQueue, new NextFit());
+    
+    //Success
+    return EXIT_SUCCESS;
 }

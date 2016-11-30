@@ -17,7 +17,7 @@ public:
 	void increaseDeFragTime();
 
 	//-----Only to be called by main-----
-	void increaseTime(int n);
+	void setTime(int n);
 	void reset();
 
 	//Used for printing!

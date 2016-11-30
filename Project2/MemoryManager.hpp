@@ -17,12 +17,13 @@ public:
 
 	//User Interface methods
 	//Reserve n memory units for process p
-	void addProc(char p, int n);
+    //addProc returns true if the process was added
+	bool addProc(char p, int n);
 	void removeProc(char p);
 
 protected:
 	
-	//Add process p, it is possible
+	//Add or remove process p
 	virtual void removeProcP(char p) = 0;
 	virtual void addProcP(char p, int n) = 0;
 

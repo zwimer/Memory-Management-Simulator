@@ -4,10 +4,9 @@
 #include <set>
 
 //The size of the HardDrive
-//const int HardDrive::MemoryWidth = 32;
-//const int HardDrive::MemoryHeight = 8;
-const int HardDrive::MemoryWidth = 5;
-const int HardDrive::MemoryHeight = 2;
+const int HardDrive::MemoryWidth = 32;
+const int HardDrive::MemoryHeight = 8;
+
 
 //A class that contains an index of memory
 //and the amount of space there is in excess
@@ -146,7 +145,7 @@ void HardDrive::deFrag() {
 		memory[i] = (char) 0;
     
     //Note what was moved, and how the memory looks now
-    std::cout << "Defragmentation complete (moved " << numMoved << " frames:";
+    std::cout << t << "Defragmentation complete (moved " << numMoved << " frames:";
     for(auto i = moved.begin(); *i != *(moved.rbegin()); i++) std::cout << ' ' << *i << ',';
     std::cout << " " << *(moved.rbegin()) << ")" << std::endl;
     printMemory();

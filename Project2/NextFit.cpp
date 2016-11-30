@@ -18,7 +18,7 @@ void NextFit::addProcP(char p, int n) {
 	if (index == -1) {
 
 		//Note that defragmentation has begin
-		std::cout << "Cannot place process " << p << " -- starting defragmentation\n";
+		std::cout << t << "Cannot place process " << p << " -- starting defragmentation\n";
 
 		//DeFrag
 		m.deFrag();

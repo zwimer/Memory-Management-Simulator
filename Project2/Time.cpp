@@ -10,9 +10,9 @@ Time::Time() { reset(); }
 int Time::getTime() const { return t; }
 
 //Only to be called by main
-void Time::increaseTime(int n) { 
-	Assert(n>0, "time did not increase.");
-	t += n;
+void Time::setTime(int n) {
+	Assert(n>=t, "time decreased.");
+	t = n;
  }
 
 //Only to be called by HardDrive
