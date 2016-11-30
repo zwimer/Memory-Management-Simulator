@@ -76,27 +76,20 @@ void simulate(const eQueue& q, MemoryManager* algo) {
     
     //Run each event
     for(eQueue theQueue(q);theQueue.size(); theQueue.pop()) {
+
+        //For readability
         Event * e = theQueue.top();
         
-        //If the process hasn't been seen yet, don't skip it
-        if (skipProcess.find(e->proc) == skipProcess.end())
-            skipProcess[e->proc] = false;
-        
-        //Skip removing the process if need be
-        else if (skipProcess[e->proc]) continue;
-        
         //Adjust time
-        t.setTime(theQueue.top()->time);
+        t.setTime(e->time);
         
         //If a process needs memory, allocate memory if possible
-        if (theQueue.top()->event==Event::ARRIVE) {
-            
-            //If a process couldn't be added because of space, not to skip removing it
+        //Record whether or not the proces was added and will leave memory later
+        if (theQueue.top()->event==Event::ARRIVE)
             skipProcess[e->proc] = !algo->addProc(theQueue.top()->proc, theQueue.top()->mem);
-        }
         
         //If a process is ready to leave memory, free up the space
-        else algo->removeProc(theQueue.top()->proc);
+        else if(!skipProcess[e->proc]) algo->removeProc(theQueue.top()->proc);
     }
     
     //Prevent leaks
