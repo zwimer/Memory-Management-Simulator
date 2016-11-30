@@ -1,25 +1,25 @@
-#include "BestFit.hpp"
+#include "WorstFit.hpp"
 
 //Constructor
-BestFit::BestFit() : MemoryManager("BestFit") {}
+WorstFit::WorstFit() : MemoryManager("WorstFit") {}
 
 //Destructor
-BestFit::~BestFit() {}
+WorstFit::~WorstFit() {}
 
 //Give process p n memory units
-void BestFit::addProcP(char p, int n) {
+void WorstFit::addProcP(char p, int n) {
 
 	int i,k;
-	std::pair<int,int> best, tmp;	
+	std::pair<int,int> worst, tmp;	
 
 	//Check if defragging is needed
-	best = m.findNextFit(0, n);
-	if (best.first == -1) {
+	worst = m.findNextFit(0, n);
+	if (worst.first == -1) {
 
 		//If so, note so, do just that, then re-find the first fit position
 		std::cout << t << "Cannot place process " << p << " -- starting defragmentation\n";
 		m.deFrag();
-		best = m.findNextFit(i=0, n);
+		worst = m.findNextFit(i=0, n);
 	}
 
 	//Check every free space
@@ -28,20 +28,21 @@ void BestFit::addProcP(char p, int n) {
         
 		//Check the size of the next free chunk
 		tmp = m.findNextFit(i, n);
-		if (tmp.second < best.second) best = tmp;
+		if (tmp.second > worst.second) worst = tmp;
 
 		//Assign i and k
-		k = i; i = m.findNextFreeChunk(i);
+		k = i;
+		i = m.findNextFreeChunk(i);
 	}
 
     //Note that the process was placed
     std::cout << t << "Placed process " << p << ":\n";
     
 	//Place the process and note where
-	m.allocateMemory(best.first, n ,p);
+	m.allocateMemory(worst.first, n ,p);
 }
 
 //Remove process p from memory
-void BestFit::removeProcP(char p) {
+void WorstFit::removeProcP(char p) {
 	m.freeMem(p);
 }

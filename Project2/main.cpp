@@ -2,6 +2,7 @@
 #include "Event.hpp"
 #include "NextFit.hpp"
 #include "BestFit.hpp"
+#include "WorstFit.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -104,9 +105,9 @@ int main(int argc, char* argv[]) {
     eQueue theQueue = readFile(argv[1]);
     
     //Simulate each algorithm
-    simulate(theQueue, new NextFit()); std::cout << "\n";
+//    simulate(theQueue, new NextFit()); std::cout << "\n";
     simulate(theQueue, new BestFit()); std::cout << "\n";
-//    simulate(theQueue, new WorstFit());
+    simulate(theQueue, new WorstFit());
     
     //Success
     return EXIT_SUCCESS;

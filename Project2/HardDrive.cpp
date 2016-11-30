@@ -38,16 +38,12 @@ std::pair<int, int> HardDrive::findNextFit(int index, int n) const {
         
         //If it can fit
         if (k == n) {
-        
-            //Find how much excess space there is
-            int s = 0;
             
-            for( k = (i+k)%size();; s++, k = ((k+1) == size()) ? 0 : (k+1) ) {
-                if (memory[k] || k == index) break;
-            }
+            //Find extra space
+            for( k = 0; (k+i+n) < size(); k++ ) if (memory[k+i+n]) break;
             
             //Return the result
-            return std::make_pair(i, s);
+            return std::make_pair(i, k);
         }
 				
 		//Increment index, circularly in memory
