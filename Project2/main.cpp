@@ -1,6 +1,7 @@
 #include "main.hpp"
 #include "Event.hpp"
 #include "NextFit.hpp"
+#include "BestFit.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -65,7 +66,7 @@ eQueue readFile(const char * inFileName) {
     }
 
     //Return the queue
-    return std::move(ret);
+    return ret;
 }
 
 //Perform simulation
@@ -103,8 +104,8 @@ int main(int argc, char* argv[]) {
     eQueue theQueue = readFile(argv[1]);
     
     //Simulate each algorithm
-    simulate(theQueue, new NextFit());
-//    simulate(theQueue, new BestFit());
+    simulate(theQueue, new NextFit()); std::cout << "\n";
+    simulate(theQueue, new BestFit()); std::cout << "\n";
 //    simulate(theQueue, new WorstFit());
     
     //Success

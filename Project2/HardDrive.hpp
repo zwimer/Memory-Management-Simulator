@@ -3,16 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <set>
 
-//A struct that contains an index of memory
-//and the amount of space there is in excess
-class nextFit {
-public:
-    nextFit(int a, int b);
-    nextFit(const nextFit &);
-	const int index;
-	const int space;
-};
 
 //A class representing the hard drive
 class HardDrive {
@@ -24,7 +16,7 @@ public:
 	//Finds the next location after index in memory that 
 	//can fit n memory units and returns it's index in memory.
 	//This function returns -1 if defragmentation is required
-	nextFit findNextFit(int index, int n) const;
+    std::pair<int, int> findNextFit(int index, int n) const;
     
     //Returns the location of the next free chunk
     //of memory after index, assumes index is free

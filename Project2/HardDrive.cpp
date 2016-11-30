@@ -7,12 +7,6 @@
 const int HardDrive::MemoryWidth = 32;
 const int HardDrive::MemoryHeight = 8;
 
-
-//A class that contains an index of memory
-//and the amount of space there is in excess
-nextFit::nextFit(int a, int b) : index(a), space(b) {}
-nextFit::nextFit(const nextFit &o) : index(o.index), space(o.space) {}
-
 //Constructor
 HardDrive::HardDrive() {
 	
@@ -27,11 +21,11 @@ HardDrive::HardDrive() {
 //Finds the next location after index in memory that 
 //can fit n memory units and returns it's index in memory.
 //This function returns -1 if defragmentation is required
-nextFit HardDrive::findNextFit(int index, int n) const {
+std::pair<int, int> HardDrive::findNextFit(int index, int n) const {
 
 	//Check for incorrect usage;
     Assert(canFit(n), "Out of memory");
-    Assert(index>=0&&index<(int)memory.size(), "illegal index passed");
+    Assert(index>=0&&index<size(), "illegal index passed");
 
 	//Record starting index
 	int k, i = index;
@@ -40,7 +34,7 @@ nextFit HardDrive::findNextFit(int index, int n) const {
 	do {
 		
 		//Check to see if n units of memory can fit
-        for(k = 0; k < n && (i+k) < (int)memory.size(); k++) if (memory[i+k]) break;
+        for(k = 0; k < n && (i+k) < size(); k++) if (memory[i+k]) break;
         
         //If it can fit
         if (k == n) {
@@ -48,20 +42,20 @@ nextFit HardDrive::findNextFit(int index, int n) const {
             //Find how much excess space there is
             int s = 0;
             
-            for( k = (i+k)%memory.size();; s++, k = ((k+1) == (int)memory.size()) ? 0 : (k+1) ) {
+            for( k = (i+k)%size();; s++, k = ((k+1) == size()) ? 0 : (k+1) ) {
                 if (memory[k] || k == index) break;
             }
             
             //Return the result
-            return nextFit(i, s);
+            return std::make_pair(i, s);
         }
 				
 		//Increment index, circularly in memory
-		if (++i >= (int)memory.size()) i = 0;
+		if (++i >= size()) i = 0;
 	} while(i != index);
 	
-    //If it can't fit, return nextFit(-1,-1)
-    return nextFit(-1,-1);
+    //If it can't fit, return -1s
+    return std::make_pair(-1,-1);
 }
 
 //Returns the location of the next free chunk
@@ -70,14 +64,13 @@ nextFit HardDrive::findNextFit(int index, int n) const {
 int HardDrive::findNextFreeChunk(int index) const {
     
     //Make sure this was called legally
-    Assert(0<=index&&index<(int)memory.size(), "Index out of bounds");
+    Assert(0<=index&&index<size(), "Index out of bounds");
     
     //Set true if a block of used memory has been found
     int i, foundUsed = false;
     
     //Repeat for each index in memory
-    for(i=index+1; i != index; i++) {
-        if (i >= (int)memory.size()) i = 0;
+    for(i=index+1; i < size(); i++) {
         
         //If a used block of memory has yet to be found
         if (!foundUsed) {
@@ -127,7 +120,7 @@ void HardDrive::deFrag() {
 
 	//For each slot in memory 
 	int firstFree = 0;
-	for(int i = 0; i < (int)memory.size(); i++) {
+	for(int i = 0; i < size(); i++) {
 
 		//If the memory is empty, do nothing
 		if (!memory[i]) continue;
@@ -141,7 +134,7 @@ void HardDrive::deFrag() {
 	}
 
 	//Mark the rest of the memory as unused
-	for(int i = firstFree; i < (int)memory.size(); i++)
+	for(int i = firstFree; i < size(); i++)
 		memory[i] = (char) 0;
     
     //Note what was moved, and how the memory looks now
@@ -169,7 +162,7 @@ void HardDrive::freeMem(char proc) {
     int memFreed = 0;
     
     //Free each memory unit containing proc
-    for(int i = 0; i < (int)memory.size(); i++)
+    for(int i = 0; i < size(); i++)
         
         //If the proc was found, delete it
         if (memory[i] == proc) {

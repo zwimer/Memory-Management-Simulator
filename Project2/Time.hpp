@@ -16,9 +16,11 @@ public:
 	//---Only to be called by HardDrive---
 	void increaseDeFragTime();
 
-	//-----Only to be called by main-----
+	//------Only to be called by main-----
 	void setTime(int n);
-	void reset();
+
+    //-Only to be called by MemoryManager-
+    void reset();
 
 	//Used for printing!
 	friend std::ostream& operator << (std::ostream& s, const Time& t);

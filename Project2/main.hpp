@@ -1,6 +1,9 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
+#include <iomanip>
+#include <utility>
+
 #include "Time.hpp"
 
 //Declare global variables

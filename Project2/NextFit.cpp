@@ -1,7 +1,7 @@
 #include "NextFit.hpp"
 
 //Constructor
-NextFit::NextFit() : MemoryManager() {
+NextFit::NextFit() : MemoryManager("NextFit") {
 	lastUsed = 0;
 }
 
@@ -12,7 +12,7 @@ NextFit::~NextFit() {}
 void NextFit::addProcP(char p, int n) {
 
 	//Find the next place the process can be placed
-	int index = m.findNextFit(lastUsed, n).index;
+    int index = m.findNextFit(lastUsed, n).first;
 
 	//If de-fragmentation is required, do so
 	if (index == -1) {
@@ -24,8 +24,8 @@ void NextFit::addProcP(char p, int n) {
 		m.deFrag();
         lastUsed = 0;
 
-		//Find where to place the process now
-		index = m.findNextFit(lastUsed, n).index;
+        //Find where to place the process now
+        index = m.findNextFit(lastUsed, n).first;
 	}
 
     //Note that the process was placed

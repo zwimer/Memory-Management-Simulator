@@ -4,6 +4,8 @@
 #include "main.hpp"
 #include "HardDrive.hpp"
 
+#include <string>
+
 //Forward declerations
 class Process;
 
@@ -12,7 +14,7 @@ class MemoryManager {
 public:
 
 	//Constructor
-	MemoryManager();
+    MemoryManager(const std::string& s);
 	virtual ~MemoryManager();
 
 	//User Interface methods
@@ -27,7 +29,8 @@ protected:
 	virtual void removeProcP(char p) = 0;
 	virtual void addProcP(char p, int n) = 0;
 
-	//Representation
+    //Representation
+    const std::string name;
 	HardDrive m;
 };
 

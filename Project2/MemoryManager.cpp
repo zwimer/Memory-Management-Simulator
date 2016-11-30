@@ -1,12 +1,15 @@
 #include "MemoryManager.hpp"
 
 //Constructor
-MemoryManager::MemoryManager() {
-	Assert(!t.getTime(), "time not reset!");
+MemoryManager::MemoryManager(const std::string& s) : name(s) {
+    t.reset();
+    std::cout << t << "Simulator started (Contiguous -- " << s << ")\n";
 }
 
 //Destructor
-MemoryManager::~MemoryManager() {}
+MemoryManager::~MemoryManager() {
+    std::cout << t << "Simulator ended (Contiguous -- " << name << ")" << std::endl;
+}
 
 //Add process p to memory if possible
 //Returns true if the process was added
