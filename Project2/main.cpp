@@ -109,8 +109,10 @@ int main(int argc, char* argv[]) {
     //Make the queue of events
     eQueue theQueue = readFile(argv[1]);
     
-    //Simulate next fit
+    //Simulate each algorithm
     simulate(theQueue, new NextFit());
+//    simulate(theQueue, new BestFit());
+//    simulate(theQueue, new WorstFit());
     
     //Success
     return EXIT_SUCCESS;
