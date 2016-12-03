@@ -24,7 +24,6 @@ namespace Contiguous {
     class NextFit;
     class Event;
     
-    
     //A function used if an assert fails
     void Err(const char *s);
     

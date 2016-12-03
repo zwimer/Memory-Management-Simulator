@@ -20,7 +20,7 @@ void Time::setTime(int n) {
 
 //Only to be called by HardDrive
 void Time::increaseDeFragTime() {
-	tDeFrag++;
+	tDeFrag += t_memmove;
 }
 
 //Reset's time
