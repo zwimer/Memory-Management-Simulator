@@ -3,8 +3,9 @@
 
 #include "main.hpp"
 
+
 //Small event class
-class Event {
+class Contiguous::Event {
 public:
     
 	//Constructor
@@ -20,7 +21,7 @@ public:
 };
 
 //Used to compare events
-class EventCompare {
+class Contiguous::EventCompare {
 public:
 	bool operator() (const Event*, const Event*);
 };

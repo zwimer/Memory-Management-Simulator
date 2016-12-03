@@ -1,6 +1,8 @@
 #include "NextFit.hpp"
 
-//Constructor
+namespace Contiguous {
+
+    //Constructor
 NextFit::NextFit() : MemoryManager("NextFit") {
 	lastUsed = 0;
 }
@@ -39,4 +41,6 @@ void NextFit::addProcP(char p, int n) {
 //Remove process p from memory
 void NextFit::removeProcP(char p) {
 	m.freeMem(p);
+}
+
 }

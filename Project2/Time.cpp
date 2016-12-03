@@ -3,6 +3,9 @@
 
 #include <ostream>
 
+//Declare namespace
+namespace Contiguous {
+
 //Constructor
 Time::Time() { reset(); }
 
@@ -28,4 +31,5 @@ void Time::reset() {
 //Used for printing!
 std::ostream& operator << (std::ostream& s, const Time& t) {
 	return (s << "time " << (t.t+t.tDeFrag) << "ms: ");
+}
 }

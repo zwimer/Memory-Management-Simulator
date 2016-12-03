@@ -1,5 +1,8 @@
 #include "WorstFit.hpp"
 
+//Declare namespace
+namespace Contiguous {
+
 //Constructor
 WorstFit::WorstFit() : MemoryManager("WorstFit") {}
 
@@ -45,4 +48,6 @@ void WorstFit::addProcP(char p, int n) {
 //Remove process p from memory
 void WorstFit::removeProcP(char p) {
 	m.freeMem(p);
+}
+
 }

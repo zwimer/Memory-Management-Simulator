@@ -6,11 +6,9 @@
 
 #include <string>
 
-//Forward declerations
-class Process;
 
 //An abstract class to represent a MemoryManager
-class MemoryManager {
+class Contiguous::MemoryManager {
 public:
 
 	//Constructor

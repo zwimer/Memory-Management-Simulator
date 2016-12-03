@@ -1,7 +1,8 @@
 #include "MemoryManager.hpp"
 
+
 //Next Fit algorithm
-class WorstFit : public MemoryManager {
+class Contiguous::WorstFit : public MemoryManager {
 public:
 
 	//Constructor

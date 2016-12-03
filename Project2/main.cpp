@@ -17,6 +17,9 @@
 //Define t_memmove
 extern const int t_memmove = 1;
 
+//Declare namespace
+namespace Contiguous {
+
 //Declare global time
 Time t;
 
@@ -97,17 +100,18 @@ void simulate(const eQueue& q, MemoryManager* algo) {
     //Prevent leaks
     delete algo;
 }
+}
 
 //Main function
 int main(int argc, char* argv[]) {
     
     //Make the queue of events
-    eQueue theQueue = readFile(argv[1]);
+    Contiguous::eQueue theQueue = Contiguous::readFile(argv[1]);
     
     //Simulate each algorithm
-//    simulate(theQueue, new NextFit()); std::cout << "\n";
-    simulate(theQueue, new BestFit()); std::cout << "\n";
-    simulate(theQueue, new WorstFit());
+    Contiguous::simulate(theQueue, new Contiguous::NextFit()); std::cout << "\n";
+    Contiguous::simulate(theQueue, new Contiguous::BestFit()); std::cout << "\n";
+    Contiguous::simulate(theQueue, new Contiguous::WorstFit());
     
     //Success
     return EXIT_SUCCESS;

@@ -8,12 +8,29 @@
 
 //Declare global variables
 extern const int t_memmove;
-extern Time t;
 
-//A function used if an assert fails
-void Err(const char *s);
-
-//A function used to test assertions
-void Assert(bool b, const char *s);
+//Declare namespace
+namespace Contiguous {
+    
+    //Declare global variables
+    extern Time t;
+    
+    //Forward declerations
+    class MemoryManager;
+    class EventCompare;
+    class HardDrive;
+    class WorstFit;
+    class BestFit;
+    class NextFit;
+    class Event;
+    
+    
+    //A function used if an assert fails
+    void Err(const char *s);
+    
+    //A function used to test assertions
+    void Assert(bool b, const char *s);
+    
+}
 
 #endif

@@ -1,13 +1,15 @@
 #ifndef HARD_DRIVE_HPP
 #define HARD_DRIVE_HPP
 
+#include "main.hpp"
+
 #include <iostream>
 #include <vector>
 #include <set>
 
 
 //A class representing the hard drive
-class HardDrive {
+class Contiguous::HardDrive {
 public:
 
 	//Constructor

@@ -3,8 +3,13 @@
 
 #include <ostream>
 
+//Declare namespace
+namespace Contiguous {
+    class Time;
+}
+
 //A class representing time
-class Time {
+class Contiguous::Time {
 public:
 
 	//Constructor

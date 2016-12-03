@@ -1,5 +1,7 @@
 #include "MemoryManager.hpp"
 
+namespace Contiguous {
+
 //Constructor
 MemoryManager::MemoryManager(const std::string& s) : name(s) {
     t.reset();
@@ -43,4 +45,6 @@ void MemoryManager::removeProc(char p) {
 	//Note the process' removal
 	std::cout << t << "Process " << p << " removed:\n";
 	m.printMemory();
+}
+
 }

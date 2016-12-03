@@ -1,5 +1,7 @@
 #include "BestFit.hpp"
 
+namespace Contiguous {
+
 //Constructor
 BestFit::BestFit() : MemoryManager("BestFit") {}
 
@@ -44,4 +46,6 @@ void BestFit::addProcP(char p, int n) {
 //Remove process p from memory
 void BestFit::removeProcP(char p) {
 	m.freeMem(p);
+}
+
 }

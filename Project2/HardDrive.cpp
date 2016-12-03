@@ -3,6 +3,9 @@
 
 #include <set>
 
+//Declare namespace
+namespace Contiguous {
+
 //The size of the HardDrive
 const int HardDrive::MemoryWidth = 32;
 const int HardDrive::MemoryHeight = 8;
@@ -171,4 +174,5 @@ void HardDrive::freeMem(char proc) {
     
     //Update memory used
     memoryUnused += memFreed;
+}
 }
