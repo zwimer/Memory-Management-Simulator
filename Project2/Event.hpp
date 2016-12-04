@@ -16,6 +16,7 @@ public:
     const char proc;
 
 	//Different states of event
+    //Arrive > Leave is important
     static const int LEAVE;
     static const int ARRIVE;
 };
