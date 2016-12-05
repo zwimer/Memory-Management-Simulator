@@ -23,6 +23,8 @@ namespace Contiguous {
     class BestFit;
     class NextFit;
     class Event;
+
+    class NonContiguous;
     
     //A function used if an assert fails
     void Err(const char *s);

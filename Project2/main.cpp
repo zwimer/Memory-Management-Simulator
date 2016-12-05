@@ -4,6 +4,8 @@
 #include "BestFit.hpp"
 #include "WorstFit.hpp"
 
+#include "NonContiguous.hpp"
+
 #include <algorithm>
 #include <iostream>
 #include <stdlib.h>
@@ -109,9 +111,10 @@ int main(int argc, char* argv[]) {
     Contiguous::eQueue theQueue = Contiguous::readFile(argv[1]);
     
     //Simulate each algorithm
-    Contiguous::simulate(theQueue, new Contiguous::NextFit()); std::cout << "\n";
-    Contiguous::simulate(theQueue, new Contiguous::BestFit()); std::cout << "\n";
-    Contiguous::simulate(theQueue, new Contiguous::WorstFit());
+    //Contiguous::simulate(theQueue, new Contiguous::NextFit()); std::cout << "\n";
+    //Contiguous::simulate(theQueue, new Contiguous::BestFit()); std::cout << "\n";
+    //Contiguous::simulate(theQueue, new Contiguous::WorstFit());
+    Contiguous::simulate(theQueue, new Contiguous::NonContiguous());
     
     //Success
     return EXIT_SUCCESS;
