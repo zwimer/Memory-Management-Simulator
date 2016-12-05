@@ -4,7 +4,7 @@
 #include "MemoryManager.hpp"
 #include <vector>
 
-class Contiguous::NonContiguous : public MemoryManager {
+class NonContiguous : public Contiguous::MemoryManager {
     public:
         NonContiguous();
         ~NonContiguous();

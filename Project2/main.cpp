@@ -114,7 +114,7 @@ int main(int argc, char* argv[]) {
     //Contiguous::simulate(theQueue, new Contiguous::NextFit()); std::cout << "\n";
     //Contiguous::simulate(theQueue, new Contiguous::BestFit()); std::cout << "\n";
     //Contiguous::simulate(theQueue, new Contiguous::WorstFit());
-    Contiguous::simulate(theQueue, new Contiguous::NonContiguous());
+    Contiguous::simulate(theQueue, new NonContiguous());
     
     //Success
     return EXIT_SUCCESS;
