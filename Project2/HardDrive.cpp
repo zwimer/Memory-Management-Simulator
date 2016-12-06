@@ -138,7 +138,8 @@ void HardDrive::deFrag() {
     
     //Note what was moved, and how the memory looks now
     std::cout << t << "Defragmentation complete (moved " << numMoved << " frames:";
-    for(auto i = moved.begin(); *i != *(moved.rbegin()); i++) std::cout << ' ' << *i << ',';
+    for(std::set<char>::const_iterator i = moved.begin(); *i != *(moved.rbegin()); i++) 
+		std::cout << ' ' << *i << ',';
     std::cout << " " << *(moved.rbegin()) << ")" << std::endl;
     printMemory();
 }
