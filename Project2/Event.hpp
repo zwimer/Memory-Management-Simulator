@@ -12,8 +12,8 @@ public:
 	Event(char _proc, int _mem, int _event, int _time);
 
 	//Representation
-    const int event, time, mem;
     const char proc;
+    const int mem, event, time;
 
 	//Different states of event
     //Arrive > Leave is important

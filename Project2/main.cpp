@@ -59,7 +59,7 @@ eQueue readFile(const char * inFileName) {
         char proc;
         
         //Prepare the line to be read
-        for(int i = 0; i < line.size(); i++)
+        for(unsigned int i = 0; i < line.size(); i++)
             if (line[i] == '/') line[i] = ' ';
         std::istringstream theLine(line);
         
@@ -106,6 +106,7 @@ void simulate(const eQueue& q, MemoryManager* algo) {
 
 //Main function
 int main(int argc, char* argv[]) {
+    Assert(argc == 2, "Usage: ./a.out proc_info.txt");
     
     //Make the queue of events
     Contiguous::eQueue theQueue = Contiguous::readFile(argv[1]);
@@ -121,7 +122,5 @@ int main(int argc, char* argv[]) {
     //ALEX, PUT YOUR CODE HERE !!!!!!!!
     
     
-    
-    //Success
     return EXIT_SUCCESS;
 }
