@@ -106,7 +106,7 @@ void simulate(const eQueue& q, MemoryManager* algo) {
 
 //Main function
 int main(int argc, char* argv[]) {
-    Assert(argc == 2, "Usage: ./a.out proc_info.txt");
+    Contiguous::Assert(argc == 2, "Usage: ./a.out proc_info.txt");
     
     //Make the queue of events
     Contiguous::eQueue theQueue = Contiguous::readFile(argv[1]);
