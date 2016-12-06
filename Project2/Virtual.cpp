@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
 #include "Virtual.hpp"
@@ -111,7 +112,7 @@ void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<in
 	int state;
 	int pagefaults = 0;
 	int vic;
-	printf("Simulating %s with fixed frame size of %d\n", algoname, F);
+	std::cout <<"Simulating "<< algoname << " with fixed frame size of " << F << "\n";
 	for (i = 0; i < refs.size(); i++)
 	{
 
@@ -126,6 +127,7 @@ void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<in
 		}
 		if (state == PAGE)
 		{
+			pagefaults +=1;
 			// do pagefault
 			if (filled)
 			{
@@ -152,7 +154,7 @@ void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<in
 		}
 
 	}
-	printf("End of %s simulation (%d page faults)\n", algoname, pagefaults);
+	std::cout << "End of " << algoname <<" simulation (" << pagefaults << " page faults)\n";
 }
 
 
