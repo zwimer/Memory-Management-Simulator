@@ -2,7 +2,7 @@
 
 using namespace Contiguous;
 
-NonContiguous::NonContiguous() : MemoryManager("NonContiguous") {
+NonContiguous::NonContiguous() : MemoryManager("") {
 	//std::cout << m.size() << "!!!\n";
 	table.resize(m.size());
 	lastUsed = 0;

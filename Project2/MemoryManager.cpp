@@ -5,12 +5,16 @@ namespace Contiguous {
 //Constructor
 MemoryManager::MemoryManager(const std::string& s) : name(s) {
     t.reset();
-    std::cout << t << "Simulator started (Contiguous -- " << s << ")\n";
+    if (s != "") std::cout << t << "Simulator started (Contiguous -- " << s;
+    else std::cout << t << "Simulator started (Non-contiguous)";
+    std::cout << ")\n";
 }
 
 //Destructor
 MemoryManager::~MemoryManager() {
-    std::cout << t << "Simulator ended (Contiguous -- " << name << ")" << std::endl;
+    if (name != "") std::cout << t << "Simulator ended (Contiguous -- "<< name;
+    else std::cout << t << "Simulator ended (Non-contiguous";
+    std::cout << ")\n\n";
 }
 
 //Add process p to memory if possible

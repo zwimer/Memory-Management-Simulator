@@ -110,11 +110,17 @@ int main(int argc, char* argv[]) {
     //Make the queue of events
     Contiguous::eQueue theQueue = Contiguous::readFile(argv[1]);
     
-    //Simulate each algorithm
-    //Contiguous::simulate(theQueue, new Contiguous::NextFit()); std::cout << "\n";
-    //Contiguous::simulate(theQueue, new Contiguous::BestFit()); std::cout << "\n";
-    //Contiguous::simulate(theQueue, new Contiguous::WorstFit());
+    //Contiguous: simulate each algorithm
+    Contiguous::simulate(theQueue, new Contiguous::NextFit());
+    Contiguous::simulate(theQueue, new Contiguous::BestFit());
+    Contiguous::simulate(theQueue, new Contiguous::WorstFit());
+
+    //Non-contiguous: simulate each algorithm
     Contiguous::simulate(theQueue, new NonContiguous());
+    
+    //ALEX, PUT YOUR CODE HERE !!!!!!!!
+    
+    
     
     //Success
     return EXIT_SUCCESS;
