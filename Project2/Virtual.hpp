@@ -4,11 +4,11 @@
 # define GOOD 2
 #define F 3
 
-
+//Namespace
 namespace Virtual{
 
-int vmain(char file[]);
-
+    //Declare main in namespace
+    int vmain(char file[]);
 
 }
 

@@ -4,7 +4,7 @@
 namespace Contiguous {
 
 //Constructor
-WorstFit::WorstFit() : MemoryManager("WorstFit") {}
+WorstFit::WorstFit() : MemoryManager("Worst-Fit") {}
 
 //Destructor
 WorstFit::~WorstFit() {}

@@ -32,7 +32,7 @@ int OPTalgo(std::vector<int> refs, int cp, int mem[], void* st)
 	int j;
 	for (i = 0; i < F; i+=1)
 	{
-		for (j = cp; j < refs.size(); j+=1)
+		for (j = cp; j < (int)refs.size(); j+=1)
 		{
 			if (refs[j] == mem[i]) break;
 		}
@@ -41,7 +41,7 @@ int OPTalgo(std::vector<int> refs, int cp, int mem[], void* st)
 			vic = i;
 			vicI = j;
 			//if victum is never refrenced again
-			if (vicI == refs.size()) return vic;
+			if (vicI == (int)refs.size()) return vic;
 		}
 	}
 	return vic;
@@ -113,7 +113,7 @@ void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<in
 	int pagefaults = 0;
 	int vic;
 	std::cout <<"Simulating "<< algoname << " with fixed frame size of " << F << "\n";
-	for (i = 0; i < refs.size(); i++)
+	for (i = 0; i < (int)refs.size(); i++)
 	{
 
 		state = PAGE;
@@ -191,6 +191,7 @@ int vmain (char file[])
 
 //	free(refs);
 	free(LFUstate.freqs);
+    return EXIT_SUCCESS;
 }
 
 }

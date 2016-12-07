@@ -4,7 +4,6 @@
 #include "BestFit.hpp"
 #include "WorstFit.hpp"
 #include "Virtual.hpp"
-
 #include "NonContiguous.hpp"
 
 #include <algorithm>
@@ -120,8 +119,9 @@ int main(int argc, char* argv[]) {
     //Non-contiguous: simulate each algorithm
     Contiguous::simulate(theQueue, new NonContiguous());
     
-    //ALEX, PUT YOUR CODE HERE !!!!!!!!
-	Virtual::vmain(argv[2]);
+	//Run the virtual simulation
+//	Virtual::vmain(argv[2]);
     
+	//Success
     return EXIT_SUCCESS;
 }

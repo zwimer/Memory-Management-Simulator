@@ -3,7 +3,7 @@
 namespace Contiguous {
 
     //Constructor
-NextFit::NextFit() : MemoryManager("NextFit") {
+NextFit::NextFit() : MemoryManager("Next-Fit") {
 	lastUsed = 0;
 }
 

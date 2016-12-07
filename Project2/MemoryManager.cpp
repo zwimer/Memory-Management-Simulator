@@ -6,7 +6,7 @@ namespace Contiguous {
 MemoryManager::MemoryManager(const std::string& s) : name(s) {
     t.reset();
     if (s != "") std::cout << t << "Simulator started (Contiguous -- " << s;
-    else std::cout << t << "Simulator started (Non-contiguous)";
+    else std::cout << t << "Simulator started (Non-contiguous";
     std::cout << ")\n";
 }
 

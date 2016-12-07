@@ -3,7 +3,7 @@
 namespace Contiguous {
 
 //Constructor
-BestFit::BestFit() : MemoryManager("BestFit") {}
+BestFit::BestFit() : MemoryManager("Best-Fit") {}
 
 //Destructor
 BestFit::~BestFit() {}
