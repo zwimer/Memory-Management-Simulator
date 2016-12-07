@@ -3,6 +3,7 @@
 #include "NextFit.hpp"
 #include "BestFit.hpp"
 #include "WorstFit.hpp"
+#include "Virtual.hpp"
 
 #include "NonContiguous.hpp"
 
@@ -120,7 +121,7 @@ int main(int argc, char* argv[]) {
     Contiguous::simulate(theQueue, new NonContiguous());
     
     //ALEX, PUT YOUR CODE HERE !!!!!!!!
-    
+	Virtual::vmain(argv[2]);
     
     return EXIT_SUCCESS;
 }
