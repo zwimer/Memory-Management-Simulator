@@ -21,6 +21,7 @@ NonContiguous::~NonContiguous() {}
 
 void NonContiguous::addProcP(char p, int n) {
 	lastUsed = 0;
+    std::cout << t << "Placed process " << p << ":\n";
     //request MemoryManager for one frame at a time
     //keep track of the proper mapping in self.table[i]
 	for (/*unsigned*/ int i=0; i<n; ++i) {
