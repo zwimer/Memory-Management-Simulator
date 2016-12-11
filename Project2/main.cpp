@@ -106,7 +106,7 @@ void simulate(const eQueue& q, MemoryManager* algo) {
 
 //Main function
 int main(int argc, char* argv[]) {
-    Contiguous::Assert(argc == 2, "Usage: ./a.out proc_info.txt");
+    Contiguous::Assert(argc == 3, "Usage: ./a.out proc_info.txt virt_mem.txt");
     
     //Make the queue of events
     Contiguous::eQueue theQueue = Contiguous::readFile(argv[1]);
@@ -120,7 +120,7 @@ int main(int argc, char* argv[]) {
     Contiguous::simulate(theQueue, new NonContiguous());
     
 	//Run the virtual simulation
-//	Virtual::vmain(argv[2]);
+	Virtual::vmain(argv[2]);
     
 	//Success
     return EXIT_SUCCESS;

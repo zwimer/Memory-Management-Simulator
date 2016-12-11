@@ -9,6 +9,7 @@
  */
 
 #include "NonContiguous.hpp"
+#include <stdio.h>
 
 using namespace Contiguous;
 

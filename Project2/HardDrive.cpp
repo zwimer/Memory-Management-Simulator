@@ -1,5 +1,6 @@
 #include "HardDrive.hpp"
 #include "main.hpp"
+#include <stdio.h>
 
 #include <set>
 
