@@ -23,25 +23,23 @@ void printMem( int mem[])
 }
 
 
-// pagefault algo interface: index_of_victum (*f)(int refs[], int cp, int n, int mem[], int F, void* algo_struct)
+// pagefault algo interface: index_of_victum (*f)(vector refs[], int cp, int mem[], void* algo_struct)
 int OPTalgo(std::vector<int> refs, int cp, int mem[], void* st)
 {
 	int vic = -1;
 	int vicI = 0;
 	int i;
 	int j;
-	for (i = 0; i < F; i+=1)
+	for (i = 0; i < F; i+=1)//for each page
 	{
-		for (j = cp; j < (int)refs.size(); j+=1)
+		for (j = cp; j < (int)refs.size(); j+=1) // look ahead untill you find next refrence
 		{
 			if (refs[j] == mem[i]) break;
 		}
-		if (vic == -1 || vicI < j)// if no victum or viictum has a higher index
+		if (vic == -1 || vicI < j || (vicI <= j && mem[i] < mem[vic]))// if no victum or viictum has a higher index
 		{
 			vic = i;
 			vicI = j;
-			//if victum is never refrenced again
-			if (vicI == (int)refs.size()) return vic;
 		}
 	}
 	return vic;
@@ -53,13 +51,13 @@ int LRUalgo(std::vector<int> refs, int cp, int mem[], void* st)
 	int vicI = 0;
 	int i;
 	int j;
-	for (i = 0; i < F; i+=1)
+	for (i = 0; i < F; i+=1)//for each page
 	{
-		for (j = cp; j > 0; j-=1)
+		for (j = cp; j > 0; j-=1)// look back over each index
 		{
-			if (refs[j] == mem[i]) break;
+			if (refs[j] == mem[i]) break;//if page refrence you found index
 		}
-		if (vic == -1 || vicI > j)// if no victum or if the victum has a more recent index
+		if (vic == -1 || vicI > j)// if page i more recent index than previous best
 		{
 			vic = i;
 			vicI = j;
@@ -78,9 +76,9 @@ int LFUalgo(std::vector<int> refs, int cp, int mem[], void* st)
 {//least frequently used
 	int j;
 	struct LFUst* state= (struct LFUst*) st;
-	for (; state->ptr < cp; state->ptr +=1)
+	for (; state->ptr < cp; state->ptr +=1)//for each frame between last page fault and now
 	{
-		for (j = 0; j < F; j++)
+		for (j = 0; j < F; j++)//increment the apropreate counter
 		{
 			if (mem[j] == refs[state->ptr]) 
 			{	
@@ -89,7 +87,7 @@ int LFUalgo(std::vector<int> refs, int cp, int mem[], void* st)
 			}
 		}
 	}
-	int vic = 0;
+	int vic = 0;//reset counter of victum
 	for (j = 1; j < F; j+=1)
 	{
 		if (state->freqs[vic] > state->freqs[j]) vic = j;
@@ -98,8 +96,10 @@ int LFUalgo(std::vector<int> refs, int cp, int mem[], void* st)
 	return vic;
 }
 
+//simulate with algo
 void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<int>, int, int*, void* ), void* st)
 {
+	//initialize stuff
 	bool filled = false;
 	int pages[F];
 	int i = 0;
@@ -113,11 +113,11 @@ void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<in
 	int pagefaults = 0;
 	int vic;
 	std::cout <<"Simulating "<< algoname << " with fixed frame size of " << F << "\n";
-	for (i = 0; i < (int)refs.size(); i++)
+	for (i = 0; i < (int)refs.size(); i++)//for each refrence
 	{
 
 		state = PAGE;
-		for (j = 0; j < F; j++)
+		for (j = 0; j < F; j++)//if found in memory, continue
 		{
 			if ( pages[j] == refs[i])
 			{
@@ -125,11 +125,11 @@ void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<in
 				break;
 			}
 		}
-		if (state == PAGE)
+		if (state == PAGE)//else 
 		{
 			pagefaults +=1;
 			// do pagefault
-			if (filled)
+			if (filled)//if memory is filled, use alo. else replace next 'empty' slot
 			{
 				state = (*algo)(refs, i,pages, st);
 			} else {
@@ -142,6 +142,7 @@ void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<in
 					}
 				}
 			}
+			//replace page in memory
 			vic = pages[state];
 			pages[state] = refs[i];
 			// print
@@ -175,11 +176,13 @@ int vmain (char file[])
 		// forward-looking, best possible
 
 	Sim(refs, "OPT" , &OPTalgo , NULL);
+	std::cout << '\n';
 
 	// LRU
 		// Least recently used
 
 	Sim(refs, "LRU" , &LRUalgo , NULL);
+	std::cout <<'\n';
 	// LFU
 		// least-frequently used
 
