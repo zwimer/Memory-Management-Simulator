@@ -122,11 +122,11 @@ void HardDrive::deFrag() {
 	int firstFree = 0;
 	for(int i = 0; i < size(); i++) {
 
-		//If the memory is empty, do nothing
-		if (!memory[i]) continue;
+		//If there is nothing to move, do nothing
+		if (!memory[i] || i == firstFree++) continue;
 
 		//Otherwise, move it to the first free slot
-		memory[firstFree++] = memory[i];
+		memory[firstFree-1] = memory[i];
 		t.increaseDeFragTime();
 
 		//Keep track of what was moved
