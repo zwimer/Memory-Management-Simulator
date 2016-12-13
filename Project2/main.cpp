@@ -1,3 +1,7 @@
+/* Operating Systems Project 2
+ * Alex Slanski, Owen Stenson, Zac Wimer
+ */
+
 #include "main.hpp"
 #include "Event.hpp"
 #include "NextFit.hpp"

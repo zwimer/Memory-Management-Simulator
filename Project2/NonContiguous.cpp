@@ -1,3 +1,7 @@
+/* Operating Systems Project 2
+ * Alex Slanski, Owen Stenson, Zac Wimer
+ */
+
 /* Non-contiguous memory management
  *  Implementation mostly handled via Contiguous namespace
  *  Memory doesn't have to be contiguous if we can keep track of 

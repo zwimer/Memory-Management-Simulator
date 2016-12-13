@@ -1,3 +1,7 @@
+/* Operating Systems Project 2
+ * Alex Slanski, Owen Stenson, Zac Wimer
+ */
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -159,7 +163,7 @@ void Sim(std::vector<int> refs, std::string algoname, int (*algo)(std::vector<in
 }
 
 
-
+//A 'main' function for the virtual section
 int vmain (char file[])
 {
 	//open argv[1] (argv[2] in real)
@@ -167,12 +171,15 @@ int vmain (char file[])
 	infile.open(file);
 	std::vector<int> refs;
 	int tmp;
+    
+    //Read file in
 	while (infile.good())
 	{
 		infile >> tmp;
 		refs.push_back(tmp);
 	}
-	// OPT
+	
+    // OPT
 		// forward-looking, best possible
 
 	Sim(refs, "OPT" , &OPTalgo , NULL);
@@ -192,7 +199,7 @@ int vmain (char file[])
 
 	Sim(refs, "LFU" , &LFUalgo , &LFUstate);
 
-//	free(refs);
+    //Prevent leaks snd success
 	free(LFUstate.freqs);
     return EXIT_SUCCESS;
 }

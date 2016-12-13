@@ -1,3 +1,7 @@
+/* Operating Systems Project 2
+ * Alex Slanski, Owen Stenson, Zac Wimer
+ */
+
 #ifndef HARD_DRIVE_HPP
 #define HARD_DRIVE_HPP
 

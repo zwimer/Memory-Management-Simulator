@@ -1,3 +1,11 @@
+/* Operating Systems Project 2
+ * Alex Slanski, Owen Stenson, Zac Wimer
+ */
+
+/* Operating Systems Project 2
+ * Alex Slanski, Owen Stenson, Zac Wimer
+ */
+
 #include "Time.hpp"
 #include "main.hpp"
 

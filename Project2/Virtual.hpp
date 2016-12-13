@@ -1,3 +1,7 @@
+/* Operating Systems Project 2
+ * Alex Slanski, Owen Stenson, Zac Wimer
+ */
+
 #ifndef VIRTUAL
 #define VIRTUAL
 # define PAGE 1

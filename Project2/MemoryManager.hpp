@@ -1,3 +1,7 @@
+/* Operating Systems Project 2
+ * Alex Slanski, Owen Stenson, Zac Wimer
+ */
+
 #ifndef MEMORY_MANAGER_HPP
 #define MEMORY_MANAGER_HPP
 
