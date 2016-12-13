@@ -32,6 +32,14 @@ Time t;
 //Helpful typedef
 typedef std::priority_queue<Event*, std::vector<Event*>, EventCompare> eQueue;
 
+/*
+ *  No debug mode was needed. I used a lot of duplicated code, and tested a few things
+ *  as I coded. Everything either worked on the first try, or had an easy to fix and
+ *  obvious error that needed no extra print statements. This is partly due to the
+ *  internal consistency checks that make used of the Assert function below. Regardless
+ *  this program pretty much needed no debugging, so no debug mode was ever needed.
+ */
+    
 //A function used if an assert fails
 void Err(const char *s) {
    	fprintf(stderr, "%s\n", s); perror("Perror");
