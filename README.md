@@ -21,7 +21,7 @@ git clone https://github.com/zwimer/Memory-Management-Simulator
 
 Create your build directory as follows
 ```bash
-mkdir Memory-Management-Simulator/build && cd Memory-Management-Simulator/build/
+mkdir Memory-Management-Simulator/src/build && cd Memory-Management-Simulator/src/build/
 ```
 
 After that run qmake and make with the command below
@@ -30,4 +30,4 @@ cmake .. && make
 ```
 
 ## Usage
-This application takes two arguments. The first is the input file, the file to be read. And the second is the file to which the simulations statics must be written.
+This application takes two arguments. The first is the input file with the process information. And the second is for the virtual memory

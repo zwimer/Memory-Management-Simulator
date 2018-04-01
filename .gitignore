@@ -1,2 +1,3 @@
-Project2.xcodeproj/*
-a.out*
+*.xcodeproj/*
+**/build/*
+*.out
