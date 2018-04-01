@@ -29,5 +29,9 @@ After that run qmake and make with the command below
 cmake .. && make
 ```
 
+# Python
+
+Decided to implement a bit in python, not the main project.
+
 ## Usage
 This application takes two arguments. The first is the input file with the process information. And the second is for the virtual memory
